@@ -1,0 +1,138 @@
+<div class="row mt-5">
+  <div class="col-8 m-auto">
+    <div class="card">
+      <h5 class="card-header">Create Signature</h5>
+      <div class="card-body">
+        <form
+          [formGroup]="generateForm"
+          (ngSubmit)="generateSignature(generateForm.value)"
+        >
+          <div class="row">
+            <div class="mb-3 col-6">
+              <label for="firstname" class="form-label">First Name</label>
+              <input
+                formControlName="firstName"
+                type="text"
+                class="form-control"
+                id="firstname"
+              />
+            </div>
+            <div class="mb-3 col-6">
+              <label for="lastname" class="form-label">LastName</label>
+              <input
+                formControlName="lastName"
+                type="text"
+                class="form-control"
+                id="lastname"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="row">
+            <div class="mb-3 col-6">
+              <label for="jobtitle" class="form-label">Job Title</label>
+              <input
+                formControlName="jobTitle"
+                type="text"
+                class="form-control"
+                id="jobtitle"
+              />
+            </div>
+            <div class="mb-3 col-6">
+              <label for="mobilenumber" class="form-label">Mobile Number</label>
+              <input
+                formControlName="mobileNumber"
+                type="text"
+                class="form-control"
+                id="mobilenumber"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="imageurl" class="form-label">Upload Image</label>
+            <input
+              formControlName="imageUrl"
+              class="form-control"
+              type="file"
+              id="imageurl"
+              (change)="onFileSelected($event)"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            />
+          </div>
+          <div class="col-md-8">
+            <!-- Button trigger modal -->
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Crop Image
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <image-cropper
+                      [imageChangedEvent]="imgChangeEvt"
+                      [maintainAspectRatio]="true"
+                      [roundCropper]="true"
+                      [aspectRatio]="4 / 4"
+                      [resizeToWidth]="256"
+                      [resizeToHeight]="256"
+                      (imageCropped)="imageCropped($event)"
+                    >
+                    </image-cropper>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      (click)="save()"
+                      type="button"
+                      class="btn btn-primary"
+                      data-bs-dismiss="modal"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">
+              Generate Signature
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
