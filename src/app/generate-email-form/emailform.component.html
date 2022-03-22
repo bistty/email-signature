@@ -58,6 +58,21 @@
             </div>
           </div>
           <div class="mb-3">
+            <label for="chooseImage" class="form-label"
+              >Would you like to upload an Image
+            </label>
+            <select
+              (change)="isImage($event.target)"
+              formControlName="chooseImage"
+            >
+              <option value=""></option>
+              <option value="yes" [selected]="selectImage === 'yes'">
+                Yes
+              </option>
+              <option value="no" [selected]="selectImage === 'no'">No</option>
+            </select>
+          </div>
+          <div class="mb-3" *ngIf="selectImage === 'yes'">
             <label for="imageurl" class="form-label">Upload Image</label>
             <input
               formControlName="imageUrl"

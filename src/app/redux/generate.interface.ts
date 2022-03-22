@@ -3,6 +3,7 @@ export interface GenerateEmailSignatureForm {
   lastName: string;
   email: string;
   jobTitle: string;
+  chooseImage: string;
   mobileNumber: string;
   imageUrl: string;
 }
